@@ -69,6 +69,7 @@ go to http://localhost:3333
 
 #### Remove containers:
 docker stop $(docker ps -a -q)
+
 docker rm $(docker ps -a -q)
 
 #### Remove all images:
