@@ -12,14 +12,14 @@ Single page application (crud) with Node+Express+Vue+MongoDB
 - MongoDb v4.0.3
 
 
-Install node and npm
+#### Install node and npm
 ```
 brew install node
 ```
-Dowloanding project
+#### Dowloand project
 
 ```
-https://github.com/AndreiSukharev/SPA_menv.git spa_menv
+git clone https://github.com/AndreiSukharev/SPA_menv.git spa_menv
 cd spa_menv
 ```
 
