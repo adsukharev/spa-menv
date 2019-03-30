@@ -3,17 +3,17 @@
 
 Single page application (crud) with Node+Express+Vue+MongoDB
 
-### Getting Started
+## Getting Started
 ___
-##### **Prerequisites**
+#### **Prerequisites**
 
 - node.js v10.15.3
 - npm v6.4.1
 - MongoDb v4.0.3
 
-#### For MacOs with Homebrew
+### For MacOs with Homebrew
 
-##### **Installing**
+#### **Installing**
 
 Install node and npm
 ```
@@ -38,7 +38,7 @@ Install dependencies
 npm i
 ```
 
-###Run
+##Run
 ___
 ```
 npm run serve
