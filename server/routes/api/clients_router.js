@@ -44,7 +44,7 @@ router.delete('/:id', function (req, res) {
 
 // Update client
 router.put('/:id', function (req, res) {
-   Client.findByIdAndUpdate(req.params.id, req.body, function(err, data) {
+   Client.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, data) {
       if (err) return res.status(404).send(err);
       res.status(200).send();
    });

@@ -6,7 +6,7 @@ const router = express.Router();
 
 // Get all providers
 router.get('/', function (req, res) {
-   Providers.find(function (err, data) {
+   Providers.find().sort('name').exec(function (err, data) {
       if (err) return res.status(404).send(err);
       res.send(data);
    });
@@ -41,7 +41,8 @@ router.delete('/:id', function (req, res) {
 
 // Update provider
 router.put('/:id', function (req, res) {
-   Providers.findByIdAndUpdate(req.params.id, req.body, function(err, data) {
+   console.log('update');
+   Providers.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, data) {
       if (err) return res.status(404).send(err);
       res.status(200).send();
    });

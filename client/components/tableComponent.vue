@@ -47,11 +47,13 @@
 
             }
         },
+        created() {
+            this.getClients();
+        },
         mounted() {
             this.$root.$on('updateClients', () => {
                 this.getClients();
             });
-            this.getClients();
         }
     }
     

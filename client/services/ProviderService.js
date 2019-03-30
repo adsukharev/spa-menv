@@ -6,10 +6,7 @@ class ProviderService {
         return new Promise(async (resolve, reject) => {
             try{
                 const res = await api().get('providers');
-                const data = res.data.map(function (provider) {
-                    return provider.name;
-                });
-                resolve(data);
+                resolve(res.data);
             }catch (err) {
                 reject(err);
             }
@@ -24,9 +21,8 @@ class ProviderService {
         return api().delete(`providers/${id}`);
     }
 
-
-    static updateClient(id, data) {
-        return api().put(`providers/${id}`, {data});
+    static updateProvider(id, provider) {
+        return api().put(`providers/${id}`, provider);
     }
 }
 

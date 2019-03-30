@@ -1,14 +1,23 @@
 <template>
     <div class="form-group">
-        <label for="providerName">Providers</label>
-        <b-input type="text" v-model="provider.name" :state="validationProviders" id="providerName" />
-        <b-form-invalid-feedback :state="validationProviders">
-            Provider's name must be 1-25 characters long.
-        </b-form-invalid-feedback>
-        <b-form-valid-feedback :state="validationProviders">
-            Ok
-        </b-form-valid-feedback>
-        <b-button variant="secondary" @click="addProvider">Add Provider</b-button>
+        <b-container fluid>
+            <b-row align-v="end" >
+
+                <b-col class="pr-0 pl-0" cols="9">
+                    <label for="providerName">Providers:</label>
+                    <b-input type="text" v-model="provider.name" :state="validationProviders" id="providerName" />
+                    <b-form-invalid-feedback :state="validationProviders">
+                    </b-form-invalid-feedback>
+                    <b-form-valid-feedback :state="validationProviders">
+                    </b-form-valid-feedback>
+                </b-col>
+
+                <b-col class="pr-0 pl-1" cols="3">
+                    <b-button class="btn-sm mb-1" variant="secondary" @click="addProvider">Add Provider</b-button>
+                </b-col>
+
+            </b-row>
+        </b-container>
     </div>
 </template>
 

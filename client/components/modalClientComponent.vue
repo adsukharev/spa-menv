@@ -56,20 +56,20 @@
             }
         },
         methods: {
-            hideModal () {
+            hideModal() {
                 this.showModal = false;
             },
-             async addClient () {
+            async addClient() {
                 await ClientService.addClient(this.client);
                 this.$root.$emit('updateClients');
                 this.hideModal();
             },
-            async editClient (id) {
+            async editClient(id) {
                 await ClientService.updateClient(id, this.client);
                 this.$root.$emit('updateClients');
                 this.hideModal();
             },
-            async deleteClient (id) {
+            async deleteClient(id) {
                 await ClientService.deleteClient(id);
                 this.$root.$emit('updateClients');
                 this.hideModal();
@@ -79,8 +79,7 @@
             this.$root.$on('showModalAction', (id) => {
                 this.id = id;
                 this.showModal = true;
-            })
+            });
         }
-
     }
 </script>

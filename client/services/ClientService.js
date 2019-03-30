@@ -33,11 +33,7 @@ class ClientService {
         return new Promise(async (resolve, reject) => {
             try {
                 const res = await api().get(`clients/${id}`);
-                const data = res.data;
-                data.providers = data.providers.map(function (provider) {
-                    return (provider.name);
-                }).sort().join(', ');
-                resolve(data)
+                resolve(res.data)
 
             } catch (err) {
                 reject(err);
@@ -55,7 +51,7 @@ class ClientService {
 
 
     static updateClient(id, data) {
-        return api().put(`clients/${id}`, {data});
+        return api().put(`clients/${id}`, data);
     }
 }
 
