@@ -38,7 +38,7 @@ Install dependencies
 npm i
 ```
 
-##Run
+## Run
 ___
 ```
 npm run serve
