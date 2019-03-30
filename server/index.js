@@ -22,7 +22,7 @@ const providers = require('./routes/api/providers_router.js');
 app.use('/api/providers', providers);
 
 //start server
-const port = process.env.PORT || 3000;
+const port = 3333;
 app.listen(port, function () {
-    console.log(`server works on port ${port}`);
+    console.log(`listening on port ${port}`);
 });
