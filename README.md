@@ -23,7 +23,7 @@ https://github.com/AndreiSukharev/SPA_menv.git spa_menv
 cd spa_menv
 ```
 
-##Installation
+## Installation
 ### Using Docker
 
 Install docker compose
@@ -65,7 +65,7 @@ npm run serve
 ```
 go to http://localhost:3333
 
-##Acknowledgments
+## Acknowledgments
 
 Remove containers:
 docker stop $(docker ps -a -q)
