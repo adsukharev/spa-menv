@@ -26,7 +26,7 @@ cd spa_menv
 ## Installation
 ### Using Docker
 
-Install docker compose
+#### Install docker compose
 
 ```
 https://docs.docker.com/compose/install/
@@ -47,13 +47,13 @@ go to http://localhost:3333
 ### For MacOs with Homebrew
 
 
-Install and start mongodb
+#### Install and start mongodb
 ```
 brew tap mongodb/brew
 brew install mongodb-community@4.0
 brew services start mongodb-community@4.0
 ```
-Install dependencies
+#### Install dependencies
 ```
 npm i
 ```
@@ -67,10 +67,10 @@ go to http://localhost:3333
 
 ## Acknowledgments
 
-Remove containers:
+#### Remove containers:
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 
-Remove all images:
+#### Remove all images:
 docker rmi $(docker images -a -q)
 
