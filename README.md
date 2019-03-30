@@ -4,7 +4,7 @@
 Single page application (crud) with Node+Express+Vue+MongoDB
 
 ## Getting Started
-___
+
 #### **Prerequisites**
 
 - node.js v10.15.3
@@ -39,7 +39,7 @@ npm i
 ```
 
 ## Run
-___
+
 ```
 npm run serve
 ```
