@@ -2,7 +2,6 @@ import api from './api.js';
 
 class ClientService {
 
-
     static fetchClients(){
         return new Promise(async (resolve, reject) => {
             try{
@@ -23,7 +22,7 @@ class ClientService {
                     }
                 )
                 )
-            }catch (err) {
+            } catch (err) {
                 reject(err);
             }
         })

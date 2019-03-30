@@ -38,11 +38,8 @@
     "body-parser": "^1.18.3",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.15",
-    "cors": "^2.8.5",
-    "ejs": "^2.6.1",
     "express": "^4.16.4",
     "mongoose": "^5.4.19",
-    "vue-axios": "^2.1.4",
-    "vuex": "^3.1.0"
+    "vue-axios": "^2.1.4"
   }
 }

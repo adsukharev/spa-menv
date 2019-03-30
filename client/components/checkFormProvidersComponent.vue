@@ -3,7 +3,7 @@
 
     <b-container class="border w-75 ml-0">
 
-        <b-row v-for="provider in providers" align-h="start">
+        <b-row v-for="provider in providers" :key="provider._id" align-h="start">
 
             <!--checkbox-->
             <b-col md="8">

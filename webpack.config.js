@@ -16,7 +16,8 @@ module.exports = {
             // А ТАКЖЕ к секциям `<script>` внутри файлов `.vue`
             {
                 test: /\.js$/,
-                loader: 'babel-loader'
+                loader: 'babel-loader',
+                query: {compact: false}
             },
             // это будет применяться к файлам `.css`
             // А ТАКЖЕ к секциям `<style>` внутри файлов `.vue`
@@ -29,6 +30,7 @@ module.exports = {
             }
         ]
     },
+    performance: { hints: false },
     plugins: [
         // убедитесь что подключили плагин!
         new VueLoaderPlugin(),

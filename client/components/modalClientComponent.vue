@@ -36,12 +36,14 @@
     import ClientService from '../services/ClientService.js';
     import formClientComponent from './formClientComponent.vue';
     import formProviders from "./checkFormProvidersComponent.vue";
+    import BModal from 'bootstrap-vue/es/components/modal/modal'
 
     export default {
         name: "modalClientComponent",
         components: {
             formClientComponent,
-            formProviders
+            formProviders,
+            BModal
         },
         data() {
             return {
