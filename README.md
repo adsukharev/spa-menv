@@ -57,7 +57,22 @@ brew services start mongodb-community@4.0
 ```
 npm i
 ```
+#### Note
 
+If you don't use docker,
+change in file server/database.js
+```
+mongoose.connect('mongodb://mongo/api', {useNewUrlParser: true, useFindAndModify: false });
+```
+to
+```
+mongoose.connect('mongodb://localhost/api', {useNewUrlParser: true, useFindAndModify: false });
+```
+
+see details here:
+```
+https://stackoverflow.com/questions/51011552/mongodb-on-with-docker-failed-to-connect-to-server-localhost27017-on-first-c
+```
 #### Run
 
 ```
