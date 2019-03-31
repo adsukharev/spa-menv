@@ -4,6 +4,8 @@
         <b-col class="text-white" md="4"><h4>Clients</h4></b-col>
         <b-col md="4">
             <div align="right">
+
+                <!--button new client-->
                 <new-client></new-client>
             </div>
         </b-col>

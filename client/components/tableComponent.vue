@@ -18,6 +18,7 @@
                     <td>{{client.email}}</td>
                     <td>{{client.phone}}</td>
                     <td>{{client.providers}}</td>
+                    <!--button edit client-->
                     <td><edit-client-component :id="client.id"></edit-client-component></td>
                 </tr>
             </tbody>

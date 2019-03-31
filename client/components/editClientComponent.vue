@@ -3,7 +3,6 @@
 
         <b-button @click="showModal(id)" variant="link" >Edit Client</b-button>
 
-
     </div>
 </template>
 

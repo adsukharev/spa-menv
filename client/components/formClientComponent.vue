@@ -2,6 +2,7 @@
 
     <b-form @submit.prevent>
 
+        <!--input Name-->
         <div class="form-group">
             <label for="clientName">Name:</label>
             <b-input type="text" :value="client.name" v-model="client.name" :state="validationName" id="clientName" />
@@ -13,6 +14,7 @@
             </b-form-valid-feedback>
         </div>
 
+        <!--input Email-->
         <div class="form-group">
             <label for="clientEmail">Email:</label>
             <b-input type="email" :value="client.email" v-model="client.email" :state="validationEmail" id="clientEmail" />
@@ -24,6 +26,7 @@
             </b-form-valid-feedback>
         </div>
 
+        <!--input Phone-->
         <div class="form-group">
             <label for="clientPhone">Phone:</label>
             <b-input type="text" :value="client.id" v-model="client.phone" :state="validationPhone" id="clientPhone" />
@@ -35,7 +38,10 @@
             </b-form-valid-feedback>
         </div>
 
+        <!--input Add Provdier-->
         <add-provider-component></add-provider-component>
+
+        <!--check form to choose providers for your client-->
         <check-form-providers-component :id="id" @selectedProviders="client.providers = $event"></check-form-providers-component>
 
     </b-form>

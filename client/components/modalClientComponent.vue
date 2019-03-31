@@ -7,9 +7,13 @@
                     <h5 v-if="!id" class="text-info">New Client</h5>
                     <h5 v-else class="text-info">Edit Client</h5>
                 </div>
+
+                <!--main form for client-->
                 <form-client-component :id="id" @formChange="client = $event"></form-client-component>
                 <div slot="modal-footer" class="w-100">
                     <b-container fluid>
+
+                        <!--footer in modal with buttons: delete, save, edit-->
                         <b-row>
                             <b-col>
                                 <b-button v-if="id" variant="danger" @click="deleteClient(id)">Delete Client</b-button>
