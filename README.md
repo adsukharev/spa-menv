@@ -80,6 +80,14 @@ npm run serve
 ```
 go to http://localhost:3333
 
+## Test
+
+API Swagger documentation
+
+``
+http://localhost:3333/api-docs
+``
+
 ## Acknowledgments
 
 #### Remove containers:
