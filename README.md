@@ -69,7 +69,7 @@ to
 mongoose.connect('mongodb://localhost/api', {useNewUrlParser: true, useFindAndModify: false });
 ```
 
-see details here:
+Why? See explanations here:
 ```
 https://stackoverflow.com/questions/51011552/mongodb-on-with-docker-failed-to-connect-to-server-localhost27017-on-first-c
 ```
