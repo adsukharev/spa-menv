@@ -44,6 +44,7 @@
     "bootstrap-vue": "^2.0.0-rc.15",
     "express": "^4.16.4",
     "mongoose": "^5.4.19",
+    "swagger-ui-express": "^4.0.2",
     "vue-axios": "^2.1.4"
   }
 }

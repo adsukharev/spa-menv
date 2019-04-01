@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://mongo/api', {useNewUrlParser: true, useFindAndModify: false });
+mongoose.connect('mongodb://localhost/api', {useNewUrlParser: true, useFindAndModify: false });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {

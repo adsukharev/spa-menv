@@ -3,10 +3,15 @@ const bodyParser = require('body-parser');
 const database = require('./database');
 const path = require('path');
 const app = express();
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
 //Middleware
 app.use(bodyParser.json());
 app.use(express.static(path.resolve('dist/')));
+
+// Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 //route to index.html
 app.get('/', (req, res) => {
