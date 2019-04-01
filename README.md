@@ -1,7 +1,7 @@
 # SPA_menv
 
 
-Single page application (crud) with Node+Express+Vue+MongoDB
+Single page application (crud) with Node+Express+Vue+MongoDB+Docker
 
 ## Getting Started
 
