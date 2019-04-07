@@ -72,17 +72,15 @@
                 this.getProviders();
                 this.$root.$emit('updateClients');
             },
-            async getProvider_of_Client(){
+            async getSelectedProviders(){
                 let client = await ClientService.fetchOneClient(this.id);
                 this.selected = client.providers;
-                console.log(this.selected);
-
             }
 
         },
         created() {
             if (this.id)
-                this.getProvider_of_Client();
+                this.getSelectedProviders();
             this.getProviders();
         },
 
@@ -118,7 +116,3 @@
         },
     }
 </script>
-
-<style scoped>
-
-</style>

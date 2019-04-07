@@ -1,6 +1,7 @@
 const express = require('express');
 const mongodb = require('mongodb');
 const Providers = require('../../models/provider_model.js');
+const {errors_provider} = require("./manage_validation_errors.js");
 
 const router = express.Router();
 
@@ -22,18 +23,22 @@ router.get('/:id', function (req, res) {
 
 // Add provider
 router.post('/', function (req, res) {
-   Providers.create({
-      name: req.body.name,
-   }, function (err, data) {
-      if (err) return res.status(404).send(err);
-      res.status(201).send();
-   });
 
+   // validate unique name
+   Providers.init().then(function() {
+      //create client
+      Providers.create({
+         name: req.body.name,
+      }, function (err) {
+            if (err) return res.status(404).send(errors_provider(err));
+            res.status(201).send();
+      });
+   })
 });
 
 // Delete provider
 router.delete('/:id', function (req, res) {
-   Providers.deleteOne({_id: req.params.id}, function (err, data) {
+   Providers.deleteOne({_id: req.params.id}, function (err) {
       if (err) return res.status(404).send(err);
       res.status(200).send();
    });
@@ -41,9 +46,8 @@ router.delete('/:id', function (req, res) {
 
 // Update provider
 router.put('/:id', function (req, res) {
-   console.log('update');
-   Providers.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, data) {
-      if (err) return res.status(404).send(err);
+   Providers.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true}, function(err) {
+      if (err) return res.status(404).send(errors_provider(err));
       res.status(200).send();
    });
 });

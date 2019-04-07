@@ -5,20 +5,26 @@ const Provider = require('./provider_model.js');
 const schemaClient =new Schema({
   name: {
     type: String,
-    max: [25, 'Too long name'],
-    required: true
+    trim: true,
+    lowercase: true,
+    maxlength: [25, 'Too long name'],
+    required: [true, 'Name is required'],
+    unique: true
   },
   email: {
     type: String,
-    min:[4, 'Too short email'],
-    max: [25, 'Too long email'],
+    minlength:[4, 'Too short email'],
+    maxlength: [25, 'Too long email'],
+    required: [true, 'Email is required']
   },
   phone: {
     type: String,
-    min:[2, 'Too short phone number'],
-    max: [18, 'Too long phone number'],
+    minlength:[2, 'Too short phone number'],
+    maxlength: [18, 'Too long phone number'],
+    required: [true, 'Phone is required']
   },
-  providers: [{ type: Schema.Types.ObjectId, ref: 'Provider' }]
-}, {versionKey: false});
+  providers: [{ type: Schema.Types.ObjectId, ref: 'Provider'}]
+},
+    {versionKey: false});
 
 module.exports = mongoose.model('Client', schemaClient);

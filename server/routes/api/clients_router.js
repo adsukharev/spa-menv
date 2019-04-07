@@ -1,6 +1,7 @@
 const express = require('express');
 const mongodb = require('mongodb');
 const Client = require('../../models/client_model.js');
+const {errors_client} = require("./manage_validation_errors.js");
 
 const router = express.Router();
 
@@ -22,21 +23,34 @@ router.get('/', function (req, res) {
 
 // Add client
 router.post('/', function (req, res) {
-   Client.create({
-      name: req.body.name,
-      email: req.body.email,
-      phone: req.body.phone,
-      providers: req.body.providers,
-   }, function (err, data) {
-      if (err) return res.status(404).send(err);
-      res.status(201).send();
-   });
 
+   //validate provider's field
+   if (req.body.providers.length === 0)
+      return res.status(404).send(["Field `Providers` is required"]);
+
+   // init() for validation unique name
+   Client.init().then(function() {
+      //if unique
+      Client.create({
+         name: req.body.name,
+         email: req.body.email,
+         phone: req.body.phone,
+         providers: req.body.providers,
+      },
+          function (err) {
+            if (err) return res.status(404).send(errors_client(err));
+            res.status(201).send();
+      });
+   })
+       //if not unique
+       .catch(err =>{
+          if (err) return res.status(404).send(errors_client(err));
+       })
 });
 
 // Delete client
 router.delete('/:id', function (req, res) {
-   Client.deleteOne({_id: req.params.id}, function (err, data) {
+   Client.deleteOne({_id: req.params.id}, function (err) {
       if (err) return res.status(404).send(err);
       res.status(200).send();
    });
@@ -44,8 +58,13 @@ router.delete('/:id', function (req, res) {
 
 // Update client
 router.put('/:id', function (req, res) {
-   Client.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, data) {
-      if (err) return res.status(404).send(err);
+
+   //validate provider's field
+   if (req.body.providers.length === 0)
+      return res.status(404).send(["Field `Providers` is required"]);
+
+   Client.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true}, function(err) {
+      if (err) return res.status(404).send(errors_client(err));
       res.status(200).send();
    });
 });
