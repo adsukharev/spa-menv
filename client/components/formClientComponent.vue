@@ -7,7 +7,7 @@
             <label for="clientName">Name:</label>
             <b-input type="text" :value="client.name" v-model="client.name" :state="validationName" id="clientName" />
             <b-form-invalid-feedback :state="validationName">
-                Name must be 1-25 characters long.
+                must be 1-25 characters long.
             </b-form-invalid-feedback>
             <b-form-valid-feedback :state="validationName">
                 Ok
@@ -19,7 +19,7 @@
             <label for="clientEmail">Email:</label>
             <b-input type="email" :value="client.email" v-model="client.email" :state="validationEmail" id="clientEmail" />
             <b-form-invalid-feedback :state="validationEmail">
-                Email must be 4-25 characters long.
+                must match the email form of 4-25 characters long.
             </b-form-invalid-feedback>
             <b-form-valid-feedback :state="validationEmail">
                 Ok
@@ -31,7 +31,7 @@
             <label for="clientPhone">Phone:</label>
             <b-input type="text" :value="client.id" v-model="client.phone" :state="validationPhone" id="clientPhone" />
             <b-form-invalid-feedback :state="validationPhone">
-                Phone must be 2-18 characters long.
+                must be 2-18 numbers long.
             </b-form-invalid-feedback>
             <b-form-valid-feedback :state="validationPhone">
                 Ok
@@ -49,11 +49,9 @@
 </template>
 
 <script>
-
     import addProviderComponent from './addProviderComponent.vue'
     import checkFormProvidersComponent from './checkFormProvidersComponent.vue'
     import ClientService from '../services/ClientService.js';
-
     export default {
         name: "formClientComponent",
         components: {
@@ -96,10 +94,12 @@
                 return this.client.name.length > 0 && this.client.name.length < 26
             },
             validationEmail() {
-                return this.client.email.length > 3 && this.client.email.length < 26
+                const emailRe = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
+                return this.client.email.length > 3 && this.client.email.length < 26 && emailRe.test(this.client.email)
             },
             validationPhone() {
-                return this.client.phone.length > 1 && this.client.phone.length < 19
+                const phoneRe = /^[0-9 -]{2,18}$/;
+                return this.client.phone.length > 1 && this.client.phone.length < 19 && phoneRe.test(this.client.phone)
             },
         }
     }

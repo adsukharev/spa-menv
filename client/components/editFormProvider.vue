@@ -28,7 +28,6 @@
 </template>
 
 <script>
-
     import ProviderService from '../services/ProviderService.js';
     export default {
         name: "editFormProvider",
@@ -47,15 +46,17 @@
                 this.$root.$emit('showFormProvider');
             },
             async editProvider() {
-                await ProviderService.updateProvider(this._id, this.provider);
-                this.$root.$emit('updateProviders');
-                this.$root.$emit('updateClients');
-                this.showFormProvider();
+                await ProviderService.updateProvider(this._id, this.provider)
+                    .then(() => {
+                        this.$toasted.success('Provider is updated');
+                        this.$root.$emit('updateProviders');
+                        this.$root.$emit('updateClients');
+                        this.showFormProvider();
+                    })
+                    .catch(error => {
+                        this.$toasted.error(error.response.data);
+                    });
             },
         }
     }
 </script>
-
-<style scoped>
-
-</style>

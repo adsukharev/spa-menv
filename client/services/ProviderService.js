@@ -14,7 +14,7 @@ class ProviderService {
     }
 
     static addProvider(provider) {
-        return  api().post('providers', provider);
+        return api().post('providers', provider);
     }
 
     static deleteProvider(id) {

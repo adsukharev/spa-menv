@@ -6,22 +6,7 @@ class ClientService {
         return new Promise(async (resolve, reject) => {
             try{
                 const res = await api().get('clients');
-                const data = res.data;
-                resolve(
-                    data.map(function (client) {
-                        return (
-                            {
-                                id: client._id,
-                                name: client.name,
-                                email: client.email,
-                                phone: client.phone,
-                                providers: client.providers.map(function (provider) {
-                                    return (provider.name);
-                                }).sort().join(', ')
-                            })
-                    }
-                )
-                )
+                resolve(res.data)
             } catch (err) {
                 reject(err);
             }
@@ -55,4 +40,3 @@ class ClientService {
 }
 
 export default ClientService;
-

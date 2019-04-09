@@ -1,10 +1,9 @@
 import axios from 'axios';
-
-const port = 3333;
+import { PORT_MACHINE } from "babel-dotenv";
 
 export default () => {
     return axios.create({
-        baseURL: `http://localhost:${port}/api/`
+        baseURL: `http://localhost:${PORT_MACHINE}/api/`
     });
 }
 

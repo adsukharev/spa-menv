@@ -40,7 +40,13 @@ docker-compose build
 ```
 docker-compose up
 ```
-go to http://localhost:3333
+go to http://localhost:3222
+
+#### Note
+if your port is busy change in file .env
+```
+PORT_MACHINE=3222
+```
 
 ### **Or**
 
@@ -60,41 +66,60 @@ npm i
 #### Note
 
 If you don't use docker,
-change in file server/database.js
+change in file .env
 ```
-mongoose.connect('mongodb://mongo/api', {useNewUrlParser: true, useFindAndModify: false });
+MONGO_HOST=mongo
 ```
 to
 ```
-mongoose.connect('mongodb://localhost/api', {useNewUrlParser: true, useFindAndModify: false });
+MONGO_HOST=localhost
 ```
 
 Why? See explanations here:
 ```
 https://stackoverflow.com/questions/51011552/mongodb-on-with-docker-failed-to-connect-to-server-localhost27017-on-first-c
 ```
+
 #### Run
 
 ```
 npm run serve
 ```
-go to http://localhost:3333
+go to http://localhost:3222
 
 ## Test
 
 API Swagger documentation
 
 ``
-http://localhost:3333/api-docs
+http://localhost:3222/api-docs
 ``
+
+if your port is busy change in file .env
+```
+PORT_MACHINE=3222
+```
 
 ## Acknowledgments
 
-#### Remove containers:
+### List of docker containers
+docker container ls -a
+### List of docker images
+docker images
+
+### Remove containers:
+#### one container
+docker stop CONTAINER
+
+docker rm CONTAINER
+#### all containers
 docker stop $(docker ps -a -q)
 
 docker rm $(docker ps -a -q)
 
-#### Remove all images:
+### Remove images:
+#### one image
+docker image rm IMAGE
+#### all images
 docker rmi $(docker images -a -q)
 

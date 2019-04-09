@@ -1,5 +1,5 @@
-.git
-node_modules
-dist
+.git/
+node_modules/
+dist/
 usr/
-.idea
+.idea/

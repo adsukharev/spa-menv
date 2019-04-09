@@ -8,7 +8,7 @@
       "email": "mr.andrey.sd@gmail.com"
     }
   },
-  "host": "localhost:3333",
+  "host": "localhost:3222",
   "basePath": "/api",
   "tags": [
     {

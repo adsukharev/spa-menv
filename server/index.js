@@ -1,10 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const database = require('./database');
 const path = require('path');
 const app = express();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 //Middleware
 app.use(bodyParser.json());
@@ -26,8 +27,27 @@ app.use('/api/clients', clients);
 const providers = require('./routes/api/providers_router.js');
 app.use('/api/providers', providers);
 
-//start server
-const port = 3333;
-app.listen(port, function () {
-    console.log(`listening on port ${port}`);
+// mongo and server
+const port = process.env.PORT_DOCKER;
+const options = {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useCreateIndex:true,
+};
+
+//start mongo
+mongoose.connect(`mongodb://${process.env.MONGO_HOST}/${process.env.MONGO_DB}`, options);
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    console.log('WE ARE CONNECTED TO MONGODB!');
+
+    //and start server
+    app.listen(port, function () {
+        setTimeout(function() {
+            console.log(`LISTENING ON PORT ${process.env.PORT_MACHINE}...`);
+        }, 2000);
+
+    });
 });
+

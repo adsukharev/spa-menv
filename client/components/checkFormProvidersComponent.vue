@@ -15,9 +15,9 @@
                 </div>
 
                 <!--component 'editForm' if we push button 'edit provider'-->
-                  <div v-if="provider._id === editIdProvider">
-                      <edit-form-provider :_id="editIdProvider"></edit-form-provider>
-                  </div>
+                <div v-if="provider._id === editIdProvider">
+                    <edit-form-provider :_id="editIdProvider"></edit-form-provider>
+                </div>
             </b-col>
 
             <!--button edit Provider-->
@@ -37,11 +37,9 @@
 </template>
 
 <script>
-
     import { faEdit } from '@fortawesome/free-solid-svg-icons';
     import { faTrash } from '@fortawesome/free-solid-svg-icons';
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-
     import editFormProvider from './editFormProvider.vue';
     import ProviderService from '../services/ProviderService.js';
     import ClientService from '../services/ClientService.js';
@@ -69,6 +67,7 @@
             },
             async deleteProvider(id) {
                 await ProviderService.deleteProvider(id);
+                this.$toasted.success('Provider is deleted');
                 this.getProviders();
                 this.$root.$emit('updateClients');
             },
@@ -76,14 +75,12 @@
                 let client = await ClientService.fetchOneClient(this.id);
                 this.selected = client.providers;
             }
-
         },
         created() {
             if (this.id)
                 this.getSelectedProviders();
             this.getProviders();
         },
-
         mounted() {
             this.$root.$on('updateProviders', () => {
                 this.getProviders();
@@ -91,8 +88,6 @@
             this.$root.$on('showFormProvider', () => {
                 this.editIdProvider= '';
             });
-
-
         },
         watch: {
             selected: {
@@ -112,7 +107,6 @@
             icon_trash () {
                 return faTrash
             },
-
         },
     }
 </script>

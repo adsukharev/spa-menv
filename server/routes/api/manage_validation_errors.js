@@ -9,7 +9,6 @@ function errors_client(error) {
     {
         array_errors.push(error.errors[key].message)
     }
-    console.log(error.message);
     return array_errors;
 }
 
@@ -22,4 +21,3 @@ function errors_provider(error) {
 }
 
 module.exports = {errors_client, errors_provider};
-// module.exports = errors_provider;

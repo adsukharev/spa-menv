@@ -3,15 +3,13 @@
         <b-container fluid>
             <b-row align-v="end" >
 
+                <!--input for provider's name-->
                 <b-col class="pr-0 pl-0" cols="9">
                     <label for="providerName">Providers:</label>
-                    <b-input type="text" v-model="provider.name" :state="validationProviders" id="providerName" />
-                    <b-form-invalid-feedback :state="validationProviders">
-                    </b-form-invalid-feedback>
-                    <b-form-valid-feedback :state="validationProviders">
-                    </b-form-valid-feedback>
+                    <b-input type="text" v-model="provider.name" id="providerName" />
                 </b-col>
 
+                <!--button to add provider-->
                 <b-col class="pr-0 pl-1" cols="3">
                     <b-button class="btn-sm mb-1" variant="secondary" @click="addProvider">Add Provider</b-button>
                 </b-col>
@@ -36,14 +34,16 @@
         },
         methods: {
             async addProvider(){
-                await ProviderService.addProvider(this.provider);
-                this.$root.$emit('updateProviders');
+                await ProviderService.addProvider(this.provider)
+                    .then(() => {
+                        this.$toasted.success('Provider is added');
+                        this.provider.name = '';
+                        this.$root.$emit('updateProviders');
+                    })
+                    .catch(error => {
+                        this.$toasted.error(error.response.data);
+                    })
             }
         },
-        computed: {
-            validationProviders() {
-                return this.provider.name.length > 0 && this.provider.name.length < 26
-            }
-        }
     }
 </script>
