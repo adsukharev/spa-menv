@@ -38,7 +38,7 @@
             </b-form-valid-feedback>
         </div>
 
-        <!--input Add Provdier-->
+        <!--input Add Provider-->
         <add-provider-component></add-provider-component>
 
         <!--check form to choose providers for your client-->

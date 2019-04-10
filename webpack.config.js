@@ -32,7 +32,6 @@ module.exports = {
     },
     performance: { hints: false },
     plugins: [
-        // убедитесь что подключили плагин!
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             template: './client/index.html'

@@ -43,7 +43,6 @@
     import editFormProvider from './editFormProvider.vue';
     import ProviderService from '../services/ProviderService.js';
     import ClientService from '../services/ClientService.js';
-
     export default {
         name: "checkFormProvidersComponent",
         components: {
@@ -83,6 +82,9 @@
                 this.editIdProvider= '';
             });
         },
+        beforeDestroy () {
+            this.$root.$off('updateProviders')
+        },
         watch: {
             selected: {
                 handler: function (providers) {
@@ -98,7 +100,7 @@
                     this.selected = this.exist;
                 },
                 deep: true
-                },
+            },
         },
         computed: {
             icon_edit () {

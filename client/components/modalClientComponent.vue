@@ -70,6 +70,7 @@
             },
             hideModal() {
                 this.clearClient();
+                this.id = '';
                 this.showModal = false;
             },
             async addClient() {
@@ -93,7 +94,6 @@
                     .catch(error => {
                         this.$toasted.error(error.response.data);
                     });
-
             },
             async deleteClient(id) {
                 await ClientService.deleteClient(id);
