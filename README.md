@@ -43,7 +43,7 @@ docker-compose up
 go to http://localhost:3222
 
 #### Note
-if your port is busy change in file .env
+if your port 3222 is busy change only this line in file .env
 ```
 PORT_MACHINE=3222
 ```
@@ -87,6 +87,12 @@ npm run serve
 ```
 go to http://localhost:3222
 
+if your port 3222 is busy change both of these lines in file .env
+```
+PORT_MACHINE=3222
+PORT_DOCKER=3222
+```
+
 ## Test
 
 API Swagger documentation
@@ -94,11 +100,6 @@ API Swagger documentation
 ``
 http://localhost:3222/api-docs
 ``
-
-if your port is busy change in file .env
-```
-PORT_MACHINE=3222
-```
 
 ## Acknowledgments
 
