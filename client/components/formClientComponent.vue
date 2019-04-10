@@ -42,7 +42,7 @@
         <add-provider-component></add-provider-component>
 
         <!--check form to choose providers for your client-->
-        <check-form-providers-component :id="id" @selectedProviders="client.providers = $event"></check-form-providers-component>
+        <check-form-providers-component :exist="exist_providers" @selectedProviders="client.providers = $event"></check-form-providers-component>
 
     </b-form>
 
@@ -69,12 +69,14 @@
                     phone: '',
                     email: '',
                     providers: []
-                }
+                },
+                exist_providers: []
             }
         },
         methods: {
             async getClient() {
                 this.client = await ClientService.fetchOneClient(this.id);
+                this.exist_providers = this.client.providers;
             },
         },
         created() {

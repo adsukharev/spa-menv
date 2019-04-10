@@ -52,7 +52,7 @@
             ClientService
         },
         props: {
-            id: String
+            exist: Array
         },
         data() {
             return {
@@ -71,14 +71,8 @@
                 this.getProviders();
                 this.$root.$emit('updateClients');
             },
-            async getSelectedProviders(){
-                let client = await ClientService.fetchOneClient(this.id);
-                this.selected = client.providers;
-            }
         },
         created() {
-            if (this.id)
-                this.getSelectedProviders();
             this.getProviders();
         },
         mounted() {
@@ -99,6 +93,12 @@
                 },
                 deep: true
             },
+            exist: {
+                handler: function () {
+                    this.selected = this.exist;
+                },
+                deep: true
+                },
         },
         computed: {
             icon_edit () {
