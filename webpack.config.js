@@ -1,4 +1,4 @@
-// webpack.config.js
+
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -12,15 +12,11 @@ module.exports = {
                 test: /\.vue$/,
                 loader: 'vue-loader'
             },
-            // это будет применяться к файлам `.js`
-            // А ТАКЖЕ к секциям `<script>` внутри файлов `.vue`
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 query: {compact: false}
             },
-            // это будет применяться к файлам `.css`
-            // А ТАКЖЕ к секциям `<style>` внутри файлов `.vue`
             {
                 test: /\.css$/,
                 use: [
