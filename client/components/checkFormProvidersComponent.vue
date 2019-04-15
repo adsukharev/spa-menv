@@ -16,7 +16,7 @@
 
                 <!--component 'editForm' if we push button 'edit provider'-->
                 <div v-if="provider._id === editIdProvider">
-                    <edit-form-provider :_id="editIdProvider"></edit-form-provider>
+                    <edit-form-provider :_id="editIdProvider" :selected="selected" ></edit-form-provider>
                 </div>
             </b-col>
 
@@ -57,7 +57,8 @@
             return {
                 selected: [],
                 providers: [],
-                editIdProvider: ''
+                editIdProvider: '',
+                temp: []
             }
         },
         methods: {

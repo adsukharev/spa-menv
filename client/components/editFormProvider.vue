@@ -32,7 +32,8 @@
     export default {
         name: "editFormProvider",
         props: {
-            _id: String
+            _id: String,
+            selected: Array
         },
         data() {
             return {
@@ -45,12 +46,22 @@
             showFormProvider() {
                 this.$root.$emit('showFormProvider');
             },
+            findEditProvider() {
+                for (let i = 0; i < this.selected.length; i++){
+                    if (this.selected[i]._id === this._id)
+                    {
+                        this.selected[i].name = this.provider.name;
+                        break;
+                    }
+                }
+            },
             async editProvider() {
                 await ProviderService.updateProvider(this._id, this.provider)
                     .then(() => {
                         this.$toasted.success('Provider is updated');
                         this.$root.$emit('updateProviders');
                         this.$root.$emit('updateClients');
+                        this.findEditProvider();
                         this.showFormProvider();
                     })
                     .catch(error => {

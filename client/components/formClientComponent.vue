@@ -37,6 +37,7 @@
                 Ok
             </b-form-valid-feedback>
         </div>
+        <!--<div>{{ client.providers }}</div>-->
 
         <!--input Add Provider-->
         <add-provider-component></add-provider-component>

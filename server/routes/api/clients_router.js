@@ -26,7 +26,7 @@ router.post('/', function (req, res) {
 
    //validate provider's field
    if (req.body.providers.length === 0)
-      return res.status(407).send(["Field `Providers` is required"]);
+      return res.status(409).send(["Field `Providers` is required"]);
 
    // init() for validation unique name
    Client.init().then(function() {
@@ -38,13 +38,13 @@ router.post('/', function (req, res) {
          providers: req.body.providers,
       },
           function (err) {
-            if (err) return res.status(407).send(errors_client(err));
+            if (err) return res.status(409).send(errors_client(err));
             res.status(201).send();
       });
    })
        //if not unique
        .catch(err =>{
-          if (err) return res.status(407).send(errors_client(err));
+          if (err) return res.status(409).send(errors_client(err));
        })
 });
 
@@ -61,10 +61,10 @@ router.put('/:id', function (req, res) {
 
    //validate provider's field
    if (req.body.providers.length === 0)
-      return res.status(407).send(["Field `Providers` is required"]);
+      return res.status(409).send(["Field `Providers` is required"]);
 
    Client.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true}, function(err) {
-      if (err) return res.status(407).send(errors_client(err));
+      if (err) return res.status(409).send(errors_client(err));
       res.status(200).send();
    });
 });

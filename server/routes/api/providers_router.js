@@ -30,7 +30,7 @@ router.post('/', function (req, res) {
       Providers.create({
          name: req.body.name,
       }, function (err) {
-            if (err) return res.status(407).send(errors_provider(err));
+            if (err) return res.status(409).send(errors_provider(err));
             res.status(201).send();
       });
    })
