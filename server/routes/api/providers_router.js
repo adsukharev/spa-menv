@@ -30,7 +30,7 @@ router.post('/', function (req, res) {
       Providers.create({
          name: req.body.name,
       }, function (err) {
-            if (err) return res.status(404).send(errors_provider(err));
+            if (err) return res.status(407).send(errors_provider(err));
             res.status(201).send();
       });
    })
@@ -47,7 +47,7 @@ router.delete('/:id', function (req, res) {
 // Update provider
 router.put('/:id', function (req, res) {
    Providers.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true}, function(err) {
-      if (err) return res.status(404).send(errors_provider(err));
+      if (err) return res.status(418).send(errors_provider(err));
       res.status(200).send();
    });
 });
